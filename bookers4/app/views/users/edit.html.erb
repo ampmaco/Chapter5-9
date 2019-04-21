@@ -1,0 +1,25 @@
+<div class="signup_in">
+<h2>User info</h2>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <p>Please enter "Profile" within 50 characters</p>
+    </div>
+  <% end %>
+  <p>
+    Name<br>
+    <%= f.text_field :name, class: "name" %>
+  </p>
+  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user_image" %>
+  <p>
+    Profile<br>
+    <%= f.text_area :plofile, class: "intriduction" %>
+  </p>
+
+  <p><%= f.submit "Update User" %></p>
+
+<% end %>
+
+</div>

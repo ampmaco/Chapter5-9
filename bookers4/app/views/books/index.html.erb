@@ -1,0 +1,70 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4">
+			<section class="">
+				<h2>User info</h2>
+				<table>
+					<%= attachment_image_tag @profile_image, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+					<tr>
+						<td>name</td>
+						<td><%= current_user.name %></td>
+					</tr>
+					<tr>
+						<td>introduction</td>
+						<td><%= current_user.plofile %></td>
+					</tr>
+				</table>
+				<%= link_to edit_user_path(current_user.id), class: "edit_user_#{current_user.id}" do %>
+					<span class="glyphicon glyphicon-edit btn btn-default btn-block" aria-hidden="true"></span>
+				<% end %>
+				<h2>New Book</h2>
+				<%= form_for(@book) do |f| %>
+						<% if @book.errors.any? %>
+							<h3><%= @book.errors.count %> errors have occurred</h3>
+							<ul>
+								<% @book.errors.full_messages.each do |message| %>
+								<li><%= message %></li>
+								<% end %>
+							</ul>
+						<% end %>
+					<p>
+						<strong>Title</strong><br>
+						<%= f.text_field :title, class: "book_title" %>
+					</p>
+					<p>
+						<strong>Opinion</strong><br>
+						<%= f.text_area :opinion, class: "book_body" %>
+					</p>
+					<p>
+						<%= f.submit "Create Book", class: "btn-default btn-sm btn-primary btn-block" %>
+					</p>
+				<% end %>
+			</section>
+		</div>
+		<div class="col-sm-8">
+			<section class="">
+				<h2>Books</h2>
+				<table>
+					<tr>
+						<td>画像</td>
+						<td><strong>Title</strong></td>
+						<td><strong>Opinion</strong></td>
+					</tr>
+					<% @books.each do |book| %>
+					<tr>
+						<td>
+							<%= attachment_image_tag @profile_image, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
+						</td>
+						<td>
+							<%= link_to book_path(book.id), class: "book_#{book.id}" do %>
+								<%= book.title %>
+							<% end %>
+						</td>
+						<td><%= book.opinion %></td>
+					</tr>
+					<% end %>
+				</table>
+			</section>
+		</div>
+	</div>
+</div>

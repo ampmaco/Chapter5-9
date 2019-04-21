@@ -1,0 +1,55 @@
+/*/*
+Theme Name: Visio - Responsive Website Template
+Theme URI: http://preview.devisio.ro/visio-v1.2/
+Description: Visio - Responsive Website Template is a responsive website template based on the well known Bootstrap framework. Easy to work with, easy to customize and infinite solutions that can be implemented in your project are just a few attributes that recommend Visio to be one of the most complete template.
+Author: Devisio
+Author URI: http://www.devisio.ro
+Version: 1.2
+License URI: http://wrapbootstrap.com
+*/
+/* This is the place where you can override the default variables values. Check out the "Working with LESS variables" from the documentation to learn more*/
+/* This is the place where you can override the default variables values. Check out the "Working with LESS variables" from the documentation to learn more*/
+/* GENERAL STYLING */
+.signup_in {
+  margin: 0 auto;
+  width: 80%;
+}
+
+footer {
+  margin: 0 10em 0 0;
+  text-align: right;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.header-menu {
+  background-color: black;
+  color: white;
+}
+
+.header-side-menu {
+  float: right;
+}
+
+.sidebar {
+	width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+
+}
+
+.mainbar {
+	float: left;
+
+}
+
+tr {
+  border-top: solid 1px gray;
+  margin: 10px;
+}
+
+.text {
+  margin: 5px 10px;
+}

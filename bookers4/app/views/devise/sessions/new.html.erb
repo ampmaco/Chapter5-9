@@ -1,0 +1,28 @@
+<div class="signup_in">
+<h2>Log in</h2>
+<h4>Please enter your email address and password.</h4>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+	<% if resource.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <%= resource.errors.count %> error
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    Name<br>
+    <%= f.text_field :name, class: "name" %>
+  </p>
+
+  <p>
+    Password<br>
+    <%= f.password_field :password, class: "password" %>
+  </p>
+  <p><%= f.submit "Log in" %></p>
+
+<% end %>
+
+</div>
