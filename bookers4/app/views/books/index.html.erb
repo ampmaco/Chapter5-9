@@ -2,16 +2,19 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<section class="">
+				<% if flash[:notice] %>
+					<span class="text"><%= flash[:notice] %></span>
+				<% end %>
 				<h2>User info</h2>
 				<table>
 					<%= attachment_image_tag @profile_image, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
 					<tr>
-						<td>name</td>
-						<td><%= current_user.name %></td>
+						<td><span class="text">name</span></td>
+						<td><span class="text"><%= current_user.name %></span></td>
 					</tr>
 					<tr>
-						<td>introduction</td>
-						<td><%= current_user.plofile %></td>
+						<td><span class="text">introduction</span></td>
+						<td><span class="text"><%= current_user.plofile %></span></td>
 					</tr>
 				</table>
 				<%= link_to edit_user_path(current_user.id), class: "edit_user_#{current_user.id}" do %>
@@ -44,7 +47,7 @@
 		<div class="col-sm-8">
 			<section class="">
 				<h2>Books</h2>
-				<table>
+				<table class="sidebar">
 					<tr>
 						<td>画像</td>
 						<td><strong>Title</strong></td>
@@ -57,10 +60,10 @@
 						</td>
 						<td>
 							<%= link_to book_path(book.id), class: "book_#{book.id}" do %>
-								<%= book.title %>
+								<span class="text"><%= book.title %></span>
 							<% end %>
 						</td>
-						<td><%= book.opinion %></td>
+						<td><span class="text"><%= book.opinion %></span></td>
 					</tr>
 					<% end %>
 				</table>

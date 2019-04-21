@@ -2,16 +2,19 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<section class="">
+				<% if flash[:notice] %>
+					<span class="text"><%= flash[:notice] %></span>
+				<% end %>
 				<h2>User info</h2>
 				<table>
 					<%= attachment_image_tag @books.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %>
 					<tr>
-						<td>name</td>
-						<td><%= @books.user.name %></td>
+						<td><span class="text">name</span></td>
+						<td><span class="text"><%= @books.user.name %></span></td>
 					</tr>
 					<tr>
-						<td>introduction</td>
-						<td><%= @books.user.plofile %></td>
+						<td><span class="text">introduction</span></td>
+						<td><span class="text"><%= @books.user.plofile %></span></td>
 					</tr>
 				</table>
 				<%= link_to edit_user_path(current_user.id), class: "edit_user_#{current_user.id}" do %>
@@ -44,7 +47,7 @@
 		<div class="col-sm-8">
 			<section class="">
 				<h2>Book detail</h2>
-				<table>
+				<table class="sidebar">
 					<tr>
 						<td>
 							<%= link_to user_path(@books.user.id), class: "book_#{@books.user.id}" do %>
@@ -52,11 +55,18 @@
 							<%= @books.user.name %>
 							<% end %>
 						</td>
-						<td><%= @books.title %></td>
-						<td><%= @books.opinion %></td>
+						<td><span class="text"><%= @books.title %></span></td>
+						<td><span class="text"><%= @books.opinion %></span></td>
 						<% if @books.user == current_user %>
-						<td><%= link_to "edit", edit_book_path, class: "edit_book_#{@books.id}" %></td>
-						<td><%= link_to "destroy", book_path, class: "destroy_book_#{@books.id}", method: :delete %></td>
+						<td><%= link_to edit_book_path, class: "edit_book_#{@books.id}" do %>
+								<span class="text btn btn-success btn-block">edit</span>
+							<% end %>
+						</td>
+						<td>
+							<%= link_to book_path, class: "destroy_book_#{@books.id}", method: :delete, "data-confirm" => "Are you sure?" do %>
+								<span class="text btn btn-danger btn-block">destroy</span>
+							<% end %>
+						</td>
 						<% end %>
 					</tr>
 				</table>

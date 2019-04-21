@@ -3,6 +3,14 @@
 		<div class="col-md-6 col-md-offset-3">
 			<h2>Editing Book</h2>
 			<%= form_for(@book) do |f| %>
+			<% if @book.errors.any? %>
+				<h3><%= @book.errors.count %> errors have occurred</h3>
+				<ul>
+					<% @book.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+					<% end %>
+				</ul>
+			<% end %>
 			<p>Title<br>
 				<%= f.text_field :title, :size=>"100%x20", class: "book_title" %>
 			</p>
